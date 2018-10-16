@@ -1,0 +1,188 @@
+.home__page {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__top {
+        height: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        &__sudo {
+            display: block;
+            height: 35%;
+            width: 2px;
+            background-color: $color-grey-primary;
+            position: absolute;
+            top: 10rem;
+
+            &::before {
+                content: "";
+                display: block;
+                height: 0;
+                width: 2px;
+                background-color: $color-gold-secondary;
+            }
+
+            &.active {
+
+                &::before {
+                    height: 100%;
+                    transition: all 4.5s;
+                }
+            }
+        }
+
+        &__box {
+            position: relative;
+
+            &__text {
+                text-transform: capitalize;
+                font-size: 4rem;
+                visibility: hidden;
+                opacity: 0;
+                transition: all 1s;
+                transition-delay: 5s;
+                white-space: nowrap;
+                color: $color-secondary;
+                transform: translate(8rem, -3rem);
+
+                &.active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+
+    }
+
+    &__bottom {
+        align-self: flex-end;
+        height: 50%;
+        width: 100%;
+        background-image: url("/img/creativity-819371.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+
+        
+        &__sudo {
+            display: flex;
+            align-items: flex-end;
+            width: 5%;
+            height: 600%;
+            background-color: $color-gold-secondary;
+            
+            
+            &.delay4 {
+                height: 0rem;
+            }
+        }
+    }
+
+    &__horisontal {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 90vh;
+    }
+
+    &__left {
+        width: 48%;
+        height: 100vh;
+        // height: 100%;
+        // border: 1px solid #fff;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+
+        &__sudo {
+            position: absolute;
+            left: 0;
+            height: 1px;
+            width: 0;
+            background-color: $color-gold-secondary;
+
+            &.active {
+                width: 100%;
+                transition: all 5s;
+            }
+        }
+
+        &__box {
+
+            &__icon {
+                font-size: 13rem;
+                opacity: 1;
+                visibility: visible;
+                transition: all 3.5s;
+                margin-right: 3rem;
+                
+                &.active {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+
+            &__text {
+                color: $color-secondary;
+                text-transform: capitalize;
+                font-size: 4rem;
+                visibility: hidden;
+                opacity: 0;
+                transition: all 1s;
+                transition-delay: 5s;
+                white-space: nowrap;
+                transform: translate(3rem, 8rem) rotate(270deg);
+
+
+                &.active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+
+        }
+
+    }
+
+    &__right {
+        border: 1px solid #fff;
+        width: 50%;
+        background-image: url("/img/creativity-819371.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        overflow: hidden;
+
+        &__sudo {
+            width: 600%;
+            height: 10%;
+            background-color: $color-gold-secondary;
+
+            &.active {
+                width: 0;
+                transition: 3s;
+            }
+        }
+    }
+    
+}
+
+
+.home {
+    background-color: $color-grey-primary;
+    height: 99.6vh;
+    position: relative;
+}

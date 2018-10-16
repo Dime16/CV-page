@@ -1,0 +1,20 @@
+{
+  "name": "DimeCV",
+  "version": "1.0.0",
+  "description": "LicnoCv",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm-run-all --parallel devserver watch:sass",
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "devserver": "live-server"
+  },
+  "author": "Dime",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.9.3",
+    "npm-run-all": "^4.1.3",
+    "sass": "^1.14.1"
+  }
+}

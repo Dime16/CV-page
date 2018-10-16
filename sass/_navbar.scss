@@ -1,0 +1,39 @@
+.nav {
+    height: 10rem;
+    background-color: $color-grey-primary;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5rem;
+
+        &__logo {
+           
+
+            &__icon {
+                font-size: 8rem;
+                color: $color-gold-primary;
+            }
+
+        }
+
+
+
+        &__list {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+
+            &__item {
+                color: $color-gold-primary;
+                font-size: 2rem;
+                white-space: nowrap;
+
+                &:not(:last-child) {
+                    margin-right: 2rem;
+                }
+            }
+        }
+    }
+}

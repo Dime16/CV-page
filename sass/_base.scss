@@ -1,0 +1,133 @@
+//// COLOR VARS
+$color-primary-red: #6d1830;
+$color-red-1: rgb(63, 17, 39);
+$color-red-1-1: rgb(32, 4, 18);
+$color-red-2: rgb(119, 58, 59);
+$color-red-2-1: rgb(70, 5, 5);
+$color-red-3: rgb(104, 28, 63);
+$color-red-3-1: rgb(46, 14, 29);
+$color-red-4: rgb(36, 5, 19);
+$color-primary-light: #FF3366;
+$color-primary-dark: #BA265D;
+$color-primary-gold: #c69963;
+$color-primary-dark: #B28451;
+
+$color-secondary: #101d2c;
+
+$color-blue-1: rgb(18, 94, 133);
+$color-blue-1-1: rgb(5, 25, 36);
+$color-blue-2: #5680E9;
+$color-blue-3: rgb(12, 51, 71);
+$color-blue-3-1: rgb(3, 17, 24);
+
+$color-grey-light-1: #faf9f9;
+$color-grey-light-2: #f4f2f2;
+$color-grey-light-3: #f0eeee;
+$color-grey-light-4: #ccc;
+
+$color-grey-dark-1: #333;
+$color-grey-dark-2: #777;
+$color-grey-dark-3: rgb(19, 14, 14);
+
+
+$color-grey-primary2: #2C3531;
+
+$color-grey-primary: #121212;
+
+$color-grey-light: #D1E8E2;
+
+$color-green-primary: #0b4041;
+$color-green-primary1: #116466;
+$color-green-2: #011213;
+$color-green-3: #104a4b;
+$color-green-3-1: #062122;
+$color-green-4: #203b3b;
+$color-green-4-1: #041414;
+$color-green-5: #007274;
+$color-green-5-1: #001e1f;
+
+$color-gold-primary: #D9B08C;
+$color-gold-secondary: #FFCB9A;
+
+//
+
+$red-dark-1 :#FF2C40;
+$red-dark-3 :#FE2F3F;
+
+$orange: #F15B3F;
+
+$gray-dark-1: #292929;
+$gray-dark-2: #D2D2D2;
+
+$gray-light-1: #DAD9D6;
+$gray-light-2: #F8F9FB;
+$gray-light-3: #F6F9FB;
+$gray-light-4: #F6F7F9;
+
+
+
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em;   // 1200px
+$bp-large: 62.5em;   // 1000px
+$bp-medium: 50em;    // 800px;
+$bp-small: 37.5em;    // 600px;
+$bp-smaller: 31.25em;  // 500px
+$bp-smallest: 25em;    // 400px;
+
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    text-decoration: none;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 10/16 px = 62.5% --> 1 rem = 10px
+    
+    @media only screen and (max-width: $bp-largest) {
+        font-size: 50%;
+    }
+}
+
+body {
+    //  font-family: 'Merriweather', serif;
+    font-family: 'Nunito', sans-serif;
+    color: $color-grey-primary;
+    font-weight: 400;
+}
+
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.wrapper-1 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.wrapper-2 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+ 
+#{$a-tags} {
+//   color: $color-blue-2;
+  text-decoration: none;
+}
+#{$a-tags-hover} {
+//   color: $color-blue-2;
+}
+

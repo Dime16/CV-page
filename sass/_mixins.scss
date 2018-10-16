@@ -1,0 +1,32 @@
+// @mixin transform($property) {
+//     -webkit-transform: $property;
+//         -ms-transform: $property;
+//             transform: $property;
+//   }
+  
+//   .box { @include transform(rotate(30deg)); }
+
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+      -o-transform: $transforms;
+     -ms-transform: $transforms;
+ -webkit-transform: $transforms;
+       transform: $transforms;
+}
+// rotate
+@mixin rotate ($deg) {
+@include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
+} 
+// translate
+@mixin translate ($x, $y) {
+@include transform(translate($x, $y));
+}
+// skew
+@mixin skew ($x, $y) {
+@include transform(skew(#{$x}deg, #{$y}deg));
+}
