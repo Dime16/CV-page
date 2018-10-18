@@ -1,0 +1,86 @@
+.footer {
+    background-color: $gray-dark-1;
+
+
+    &__container {
+        height: 20rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $color-grey-light;
+        text-align: center;
+
+        &__left{
+            flex: 0 0 33%;
+            
+            
+
+            &__copy {
+                font-size: 1.8rem;
+
+            }
+        }
+
+
+        &__center {
+            flex: 0 0 33%;
+            display: flex;
+            justify-content: space-evenly;
+
+
+            &__link {
+              
+            }
+
+            &__svg {
+                height: 3rem;
+                width: 3rem;
+                fill: $color-grey-light;
+            }
+        }
+
+        &__right {
+            flex: 0 0 33%;
+
+            &__email {
+                font-size: 1.8rem;
+            }
+        }
+    }
+
+    &__icon-facebook {
+        transition: all .3s;
+        
+        &:hover {
+            fill:  #3B5998;
+            transform: scale(1.2);
+        }
+    }
+
+    &__icon-instagram {
+        transition: all .3s;
+        
+        &:hover {
+            fill:   #c32aa3;
+            transform: scale(1.2);
+        }
+    }
+
+    &__icon-linkedin {
+        transition: all .3s;
+        
+        &:hover {
+            fill:   #007bb5;
+            transform: scale(1.2);
+        }
+    }
+
+    &__icon-mail {
+        transition: all .3s;
+        
+        &:hover {
+            fill: #00b489;
+            transform: scale(1.2);
+        }
+    }
+}

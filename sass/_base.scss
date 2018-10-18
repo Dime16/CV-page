@@ -55,6 +55,7 @@ $red-dark-1 :#FF2C40;
 $red-dark-3 :#FE2F3F;
 
 $orange: #F15B3F;
+$orange-1: rgb(107, 45, 32);
 
 $gray-dark-1: #292929;
 $gray-dark-2: #D2D2D2;
@@ -96,6 +97,7 @@ html {
 }
 
 body {
+    // font-family: 'Kanit', sans-serif;
     //  font-family: 'Merriweather', serif;
     font-family: 'Nunito', sans-serif;
     color: $color-grey-primary;
