@@ -36,7 +36,8 @@
                 color: $orange;
                 font-size: 25rem;
                 text-transform: capitalize;
-                font-family: 'Kanit', sans-serif;
+                // font-family: 'Kanit', sans-serif;
+                font-family: 'Poppins', sans-serif;
                 font-weight: 900;
                 margin-right: 1rem;
                 transition: all 1s;
@@ -45,45 +46,6 @@
                     transition-timing-function: cubic-bezier(.9,-0.01,.89,.35);
                     transform: translateY(30rem);
                     
-                }
-
-
-                &-2 {
-                    opacity: 1;
-                    height: 100%;
-                    line-height: 0.72;
-                    color: $orange;
-                    font-size: 25rem;
-                    text-transform: capitalize;
-                    font-family: 'Kanit', sans-serif;
-                    font-weight: 900;
-                    margin-right: 1rem;
-                    transition: all 1s;
-
-                    &.active {
-                        transition-timing-function: cubic-bezier(.9,-0.01,.89,.35);
-                        transform: translateY(30rem);
-                        
-                    }
-                }
-
-                &-3 {
-                    opacity: 1;
-                    height: 100%;
-                    line-height: 0.72;
-                    color: $orange;
-                    font-size: 25rem;
-                    text-transform: capitalize;
-                    font-family: 'Kanit', sans-serif;
-                    font-weight: 900;
-                    margin-right: 1rem;
-                    transition: all 1s;
-
-                    &.active {
-                        transition-timing-function: cubic-bezier(.9,-0.01,.89,.35);
-                        transform: translateY(30rem);
-                        
-                    }
                 }
             }
 

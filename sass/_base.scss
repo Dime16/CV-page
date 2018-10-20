@@ -33,6 +33,8 @@ $color-grey-dark-3: rgb(19, 14, 14);
 $color-grey-primary2: #2C3531;
 
 $color-grey-primary: #121212;
+$color-grey-primary-b: #252424;
+$color-grey-primary-c: #363535;
 
 $color-grey-light: #D1E8E2;
 
@@ -97,9 +99,10 @@ html {
 }
 
 body {
+    font-family: 'Poppins', sans-serif;
     // font-family: 'Kanit', sans-serif;
     //  font-family: 'Merriweather', serif;
-    font-family: 'Nunito', sans-serif;
+    // font-family: 'Nunito', sans-serif;
     color: $color-grey-primary;
     font-weight: 400;
 }

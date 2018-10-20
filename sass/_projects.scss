@@ -1,15 +1,16 @@
 .project {
     background-color: $color-grey-primary;
     padding-top: 15rem;
-
+    position: relative;
     &__container {
-        position: relative;
+       
 
 
         &__box {
             display: flex;
             justify-content: flex-start;
-            // overflow: hidden;
+            overflow: hidden;
+            // position: relative;
     
 
             &-reverse {
@@ -18,48 +19,107 @@
                 // overflow: hidden;
                 padding-bottom: 15rem;
             }
-
             &:not(:last-child) {
-                margin-bottom: 15rem;
+                // margin-bottom: 15rem;
             }
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+            &__top {
+                position: fixed;
+                right: 0;
+                top: 0;
+                height: 50%;
+                width: 0;
+                background-color: orangered;
+                transition: all 1.3s;
+                z-index: 1000;
+
+                &.active {
+                    width: 100%;
+                    transition-timing-function: cubic-bezier(.9,-0.01,.89,.35);
+                }
+
+                &.active2 {
+                    height: 0;
+                    transition-timing-function: cubic-bezier(.9,-0.01,.89,.35);
+                }
+            }
+
+            &__mid {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 0;
+                height: 2px;
+                background-color: #fff;
+                transition: all 1.5s;
+                z-index: 1001;
+
+                &.active {
+                    width: 100%
+                }
+
+            }
+
+            &__bot {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                height: 50%;
+                width: 0;
+                background-color: orangered;
+                transition: all 1.3s;
+                z-index: 1000;
+
+                &.active {
+                    width: 100%;
+                    transition-timing-function: cubic-bezier(.9,-0.01,.89,.35);
+                }
+
+                &.active2 {
+                    height: 0;
+                    transition-timing-function: cubic-bezier(.9,-0.01,.89,.35);
+                }
+            }
+
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+
 
             &__left {
                 height: 100%;
                 margin-left: 10rem;
-                flex: 0 0 40%;
+                flex: 0 0 50%;
                 display: flex;
                 object-fit: cover;
-                // transform: translateX(-100rem) scale(.2);
-                opacity: 0;
                 transform: translateY(10rem);
+                // opacity: 0;
                 transition: all .4s;
+                position: relative;
+                cursor: pointer;
+
     
-                &.activ1 {
-                    // transform: translateX(0rem) scale(1);
-                    transform: translateY(5rem);
-                    opacity: .5;
-                }
-    
-                &.active2 {
-                    // transform: translateX(0rem) scale(1);
+                &.active {
                     transform: translateY(0rem);
                     opacity: 1;
                 }
     
-                &.active3 {
-                    // transform: translateX(0rem) scale(1);
+                &.active2 {
                     transform: translateY(-10rem);
                     opacity: 0;
                 }
     
-                &.active4 {
-                    // transform: translateX(0rem) scale(1);
-                    transform: translateY(-14rem);
-                    opacity: 1;
-                }
                 
-
-
 
                 &__img {
                     width: 70%;
@@ -70,11 +130,11 @@
                     display: block;
                     overflow: hidden;
                     -webkit-transform:scale(1.0);
-                    filter: blur(5px) brightness(70%) grayscale(70%);
+                    filter: blur(5px) brightness(65%) grayscale(70%);
 
                     &.active {
                         -webkit-transform: scale(1.2) translateX(-4rem);
-                        filter: blur(0px) brightness(150%);
+                        filter: blur(0px) brightness(100%);
                     }
 
                 }
@@ -86,11 +146,13 @@
                     justify-content: space-around;
                     align-items: center;
                     color: #fff;
+                    position: relative;
+                    z-index: 10;
 
                     &__header {
                         font-size: 5rem;
                         font-weight: 800;
-                        font-family: 'Kanit', sans-serif;
+                        // font-family: 'Kanit', sans-serif;
                         text-transform: uppercase;
                         transform: translateX(-2rem);
                         letter-spacing: 2px;
@@ -139,12 +201,19 @@
                 flex: 0 0 40%;
                 display: flex;
                 object-fit: cover;
-                // transform: translateX(100rem) scale(.2);
+                transform: translateY(10rem);
                 transition: all .4s;
 
                 &.active {
                     // transform: translateX(0rem) scale(1);
+                    transform: translateY(0rem);
                     opacity: 1;
+                }
+    
+                &.active2 {
+                    // transform: translateX(0rem) scale(1);
+                    transform: translateY(-10rem);
+                    opacity: 0;
                 }
 
                 &__img {
@@ -224,19 +293,194 @@
     }
 }
 
-.bg-video {
-    position: absolute;
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 500;
     top: 0;
     left: 0;
-    height: 100%;
     width: 100%;
-    z-index: -1;
-    opacity: .2;
-    overflow: hidden;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, .95),rgba(0, 0, 0, .95)), url("/img/laptop-1.jpg");
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    overflow: scroll;
+    
+    &.active {
+        display: block;
+    }
 
-    &__content {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        &__front {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 0 15rem;
+
+            &__top {
+                display: flex;
+                justify-content: space-between;
+                font-size: 3rem;
+                
+
+                &__logo {
+                    letter-spacing: 2px;
+                }
+
+                &__home {
+                    text-transform: uppercase;
+                    font-size: 2.2rem;
+                    font-weight: 600;
+                }
+            }
+
+            &__mid {
+                display: flex;
+                justify-content: flex-end;
+                // align-self: center;
+
+                &__year {
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                }
+
+                &__header {
+                    text-align: right;
+                    font-size: 22rem;
+                    text-transform: uppercase;
+                    transition: all .8s ease;
+                }
+            }
+
+            &__bot {
+                display: flex;
+                justify-content: space-between;
+
+                &__view {
+                    font-size: 3rem;
+                    text-transform: capitalize;
+                    font-weight: 600;
+                }
+
+                &__open {
+                    font-size: 3rem;
+                    text-transform: capitalize;
+                    font-weight: 600;
+                }
+
+            }
+        }
+
+
+        &__project {
+            display: flex;
+            align-items: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            width: 100%;
+
+
+            &__left {
+                flex: 0 0 40%;
+                
+            
+
+                &__header {
+                    font-size: 10rem;
+                    text-transform: capitalize;
+                    text-align: center;
+                  
+
+                    // &-reverse {
+                    //     text-align: right;
+                    //     font-size: 10rem;
+                    //     text-transform: capitalize;
+                    // }
+                }
+        
+                &__text {
+                    font-size: 2rem;
+                    line-height: 1.8;
+                    height: 100%;
+                }
+            }
+        
+            &__right {
+                flex: 0 0 40%;
+                position: relative;
+                // overflow: hidden;
+ 
+                &__img {
+                    width: 100%;
+                }
+
+                &__cover1 {
+                    left:-50%;
+                    bottom: -50%;
+                    // z-index: 1010;
+                    width: 150%;
+                    height: 100%;
+                    transform: rotate(45deg);
+                    background-color: rebeccapurple;
+                    position: absolute;
+                    transition: all .4s;
+
+                    &.active {
+                        width: 0;
+                    }
+
+                    &::before {
+                        position: absolute;
+                        background-color: green;
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        transition: all .4s;
+                        transition-delay: .5s;
+
+                        &.active {
+                            width: 0;
+                        }
+                    }
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        transition: all .4s;
+                        transition-delay: .1s;
+
+
+                        &.active {
+                            width: 0;
+                        }
+                    }
+
+                }
+
+                &__cover2 {
+                    right: -50%;
+                    top: -50%;
+                    width: 150%;
+                    height: 150%;
+                    transform: rotate(45deg);
+                    background-color: yellow;
+                    position: absolute;
+                    transition: all .4s;
+                }
+            }
+        }
     }
 }

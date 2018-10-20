@@ -1,31 +1,30 @@
 function isScrolledIntoView(a) {
     var docViewTop = $(window).scrollTop();
-    var docViewBottom = docViewTop + $(window).height();
+    var docViewBottom = docViewTop + $(window).height() - 100;
     var elemTop = a.offset().top;
     var elemBottom = elemTop + a.outerHeight();
 
     if (elemBottom > docViewTop && elemTop < docViewBottom) {
-        a.addClass("active2");
+        a.addClass("active");
     } else {
-        a.removeClass("active2");
+        a.removeClass("active");
     }
 };
 function isScrolledIntoViewTop(a) {
-    var docViewTop = $(window).scrollTop() + 100;
+    var docViewTop = $(window).scrollTop() -100;
     var docViewBottom = docViewTop + $(window).height();
     var elemTop = a.offset().top;
     var elemBottom = elemTop + a.outerHeight() ;
 
     if (elemTop < docViewTop) {
-        a.addClass("active3");
+        a.addClass("active2");
     } else {
-        a.removeClass("active3");
+        a.removeClass("active2");
     }
 };
 
+
 $(document).ready(function(){
-
-
     // ------------ NAV BAR --------------------
     // var stickyNav = $(".nav").offset().top;
     // console.log(stickyNav);
@@ -98,41 +97,19 @@ $(document).ready(function(){
                     delay -= .05;
                 $(val).addClass("active");
 
-            var random = 1.7 + Math.random();
-            var $img = $(".home__page__picture__box__cover")
-            $img.addClass("active");
-            $img.each(function (index, val) {
-                $(val).css({
-                    "transition-delay": `${random}s`
-                });
-            });
+                var random = 1.7 + Math.random();
+                var $img = $(".home__page__picture__box__cover")
+                $img.addClass("active");
+                    $img.each(function (index, val) {
+                        $(val).css({
+                            "transition-delay": `${random}s`
+                        });
+                    });
                 })
             }, 500);
 
         }
 
-    
-
-
-//     var slideIndex = 0;
-// carousel();
-
-// function carousel() {
-//     var i;
-//     var x = document.getElementsByClassName("mySlides");
-//     for (i = 0; i < x.length; i++) {
-//       x[i].style.display = "none"; 
-//     }
-//     slideIndex++;
-//     if (slideIndex > x.length) {slideIndex = 1} 
-//     x[slideIndex-1].style.display = "block"; 
-//     setTimeout(carousel, 2000); // Change image every 2 seconds
-// }
-        //   SMALL SLIDER
-
-    
-
-        // LINE LOADER - TEXT
 
   
     // }
@@ -155,26 +132,19 @@ $(document).ready(function(){
               };
 
 
+            //   $(".modal").on("resize scroll", function (){
+            //     console.log( $(".modal__box__project__left__header").isFullyInViewport() );
+            //     if( $(".modal__box__project__left__header").isFullyInViewport() ) {
+            //         $(".modal__box__project__right__cover1").each(function(index, val) {
+            //             $(val).addClass("active");
+            //         })
+            //     } else {
+            //         $(val).removeClass("active");
+            //     }
+            // });
            //   ----------- WHAT TO DO WHEN ELEMENT IS IN VIEW ---------------
         $(window).on("resize scroll", function (){
 
-            if( $(".about__right").isFullyInViewport() ) {
-                $(".about__right__html").addClass("active");
-            } else {
-                $(".about__right__html").removeClass("active");
-            }
-
-            if( $(".about__right").isFullyInViewport() ) {
-                $(".about__right__css").addClass("active");
-            } else {
-                $(".about__right__css").removeClass("active");
-            }
-
-            if( $(".about__right").isFullyInViewport() ) {
-                $(".about__right__javascript").addClass("active");
-            } else {
-                $(".about__right__javascript").removeClass("active");
-            }
 
             if( $(".about__me__box__header").isFullyInViewport() ) {
                 $(".about__me__box__header").addClass("active");
@@ -188,196 +158,197 @@ $(document).ready(function(){
                 $(".about__me__box__text").removeClass("active");
             }
 
-            // $(".project__container__box__right").each(function() {
-            //     if( $(this).isFullyInViewport() ) {
-            //         $(this).addClass("active");
-            //     } else {
-            //         $(this).removeClass("active");
-            //     }     
-            // });
-
-            // $(".project__container__box__left").each(function() {
-            //     if( $(this).isFullyInViewport() ) {
-            //         $(this).addClass("active");
-            //     } else {
-            //         $(this).removeClass("active");
-            //     }     
-            // });
-
-   
-
-
         });
+
+        var $element =  $(".project__container__box__left") ;
+        $(window).scroll(function () {
+             $element.each(function() {
+                    isScrolledIntoView($(this))
+                    isScrolledIntoViewTop($(this))
+             })
+        });
+
+        var $element2 =  $(".project__container__box__right") ;
+        $(window).scroll(function () {
+            $element2.each(function() {
+                    isScrolledIntoView($(this))
+                    isScrolledIntoViewTop($(this))
+            })
+        });
+
+
+
+
 
         //    -------------------------LETTERS and IMAGES --------------------------
 
         
-        // $(".carousel").on("init", function (){
-        //     var $letter = $(".home__page__container__center__letter");
-        //     console.log('Initilazed');
+
+
+        //  ------------------- test -----------------------------
+
+        var $header = $('.modal__box__front__mid__header');
+
+        $(".modal").scroll(function () {
+            var s = $(this).scrollTop(),
+                d = $(document).height(),
+                c = $(this).height(),
+                windowBot = s + c,
+                elemBot = $header.offset().top + $header.outerHeight(),
+                elemHight = $header.outerHeight();
+
+
+    
+            scrollPercent = (s / (d - c));
+
+            var num = s /10
+    
+            var position = (scrollPercent * ($(document).width() - $header.width()));
+    
+            $header.css({
+                'transform': `translateX(-${num})`
+            });
+        });
+
+
+    $(".project__container__box__left").on("click", function(){
+        var $top =  $(this).siblings(".project__container__box__top");
+        var $bot =  $(this).siblings(".project__container__box__bot");
+        var $mid =  $(this).siblings(".project__container__box__mid");
+
+        $(this).siblings(".project__container__box__top").addClass("active");
+        $(this).siblings(".project__container__box__bot").addClass("active");
+
+        setTimeout(function() {
+            $mid.addClass("active");
+            $(".modal").addClass("active");
+        }, 1400);
+
+        setTimeout(function() {
+            $top.addClass("active2");
+            $bot.addClass("active2");
+            $mid.css({"display": "none"})
+            $mid.removeClass("active")
+        }, 2900);
+
+        setTimeout(function() {
+            $top.css({"display": "none"})
+            $bot.css({"display": "none"})
+            $top.removeClass("active");
+            $bot.removeClass("active");
+            $top.removeClass("active2");
+            $bot.removeClass("active2");
+        }, 4200)
+        setTimeout(function() {
+            $top.css({"display": "block"})
+            $bot.css({"display": "block"})
+            $mid.css({"display": "block"})
+        }, 4300);
+
+    });
+
+    $(".project__container__box__right").on("click", function(){
+        var $top =  $(this).siblings(".project__container__box__top");
+        var $bot =  $(this).siblings(".project__container__box__bot");
+        var $mid =  $(this).siblings(".project__container__box__mid");
+
+        $(this).siblings(".project__container__box__top").addClass("active");
+        $(this).siblings(".project__container__box__bot").addClass("active");
+
+        setTimeout(function() {
+            $mid.addClass("active");
+            $(".modal").addClass("active");
+        }, 1300);
+
+        setTimeout(function() {
+            $top.addClass("active2");
+            $bot.addClass("active2");
+            $mid.css({"display": "none"})
+            $mid.removeClass("active")
+        }, 2800);
+
+        setTimeout(function() {
+            $top.css({"display": "none"})
+            $bot.css({"display": "none"})
+            $top.removeClass("active");
+            $bot.removeClass("active");
+            $top.removeClass("active2");
+            $bot.removeClass("active2");
+        }, 4100)
+        setTimeout(function() {
+            $top.css({"display": "block"})
+            $bot.css({"display": "block"})
+            $mid.css({"display": "block"})
+        }, 4200);
+
+    });
+
+    $(".modal__box__front__top__home").on("click", function(){
+        var $top = $(".project__container__box__top");
+        var $bot = $(".project__container__box__bot");
+        var $mid = $(".project__container__box__mid");
+        $($top).addClass("active");
+        $($bot).addClass("active");
+
+        setTimeout(function() {
+            $mid.addClass("active");
+        }, 1300);
+
+        setTimeout(function() {
+            $top.addClass("active2");
+            $bot.addClass("active2");
+            $mid.css({"display": "none"})
+            $mid.removeClass("active")
+            $(".modal").removeClass("active");
+        }, 2800);
+
+        setTimeout(function() {
+            $top.css({"display": "none"})
+            $bot.css({"display": "none"})
+            $top.removeClass("active");
+            $bot.removeClass("active");
+            $top.removeClass("active2");
+            $bot.removeClass("active2");
+        }, 4100)
+        setTimeout(function() {
+            $top.css({"display": "block"})
+            $bot.css({"display": "block"})
+            $mid.css({"display": "block"})
             
-        //     var delay = 1.5;
-        //     $letter.each(function(index, val) {
-        //         $(val).css({
-        //             "transition-delay": `${delay}s`
-        //         });
-        //         $(val).addClass("active");
-        //         delay -= .05;
-        //     });
-
-        //     // var random = 2 + Math.random();
-        //     var $img = $(".home__page__picture__box__cover")
-        //     $img.addClass("active");
-        //     $img.each(function (index, val) {
-        //         $(val).css({
-        //             "transition-delay": `2.5s`
-        //         });
-        //     });
-
-        //  });
-
-
-
-        //  $(".carousel").on("beforeChange", function (event, slick, currentSlide, nextSlide){
-        //     console.log('before change');
-        //     // console.log($(slick.$slides.get(currentSlide)));
-
-        //     // var $ova = $(slick.$slides.get(currentSlide)).children("div").children("div").children("span").children("div");
-        //     // console.log($ova);
-        //     // var delay = 1.5;
-        //     var $letter = $(".home__page__container__center__letter");
-        //     if( $letter.hasClass("active") ) {
-        //         $letter.removeClass("active");
-        //     } else {
-        //         $letter.addClass("active");
-        //     }
-
-            // var $letter = $(".home__page__container__center__letter");
-            // if( $letter.hasClass("active") ) {
-            //     $letter.removeClass("active");
-            // } else {
-            //     $letter.addClass("active");
-            // }
-
-        //     var $img = $(".home__page__picture__box__cover")
-        //     if( $img.hasClass("active") ) {
-        //            $img.removeClass("active");
-        //         } else {
-        //            $img.addClass("active");
-        //     }
-
-        //     var $letter2 = $(".home__page__container__center__letter-2");
-            
-        //     var delay = 2;
-        //     $letter2.each(function(index, val) {
-        //         $(val).css({
-        //             "transition-delay": `${delay}s`
-        //         });
-        //         $(val).addClass("active");
-        //         delay -= .05;
-        //     });
-
-        //     // var random = 2 + Math.random();
-        //     var $img2 = $(".home__page__picture__box__cover-2")
-        //     $img2.addClass("active");
-        //     $img2.each(function (index, val) {
-        //         $(val).css({
-        //             "transition-delay": `2.5s`
-        //         });
-        //     });
-
-        // });
-
-        // $(".carousel").on("afterChange", function (){
-        //     var $letter = $(".home__page__container__center__letter");
-        //     $letter.addClass("active");
-            
-        // });
-
-        // $(".carousel").on("init", function (){
-        //     var $letter = $(".home__page__container__center__letter-2");
-        //     console.log('Initilazed');
-            
-        //     var delay = 1.5;
-        //     $letter.each(function(index, val) {
-        //         $(val).css({
-        //             "transition-delay": `${delay}s`
-        //         });
-        //         $(val).addClass("active");
-        //         delay -= .05;
-        //     });
-
-        //     // var random = 2 + Math.random();
-        //     var $img = $(".home__page__picture__box__cover-2")
-        //     $img.addClass("active");
-        //     $img.each(function (index, val) {
-        //         $(val).css({
-        //             "transition-delay": `2.5s`
-        //         });
-        //     });
-
-        //  });
+        }, 4200);
+        
+    });
 
 
 
 
-        //  ------------------- 2 -----------------------------
-
- 
 
 
-      //  ------------ CHANGING THE BACKGROUND IMAGES OF BOXES ------------------
+      //  ------------ Togle text ------------------
+
+      $(".about__skills__box").each(function(ind, val) {     
+        $(this).mouseover(function(){
+                $(this).children("div").addClass("active")
+                $(this).children(".about__skills__box__percent").addClass("active")
+                $(this).children(".about__skills__box__teck").addClass("active").css({
+                    "transition-delay": ".2s"
+                })
+            });
+      });
+
+      $(".about__skills__box").each(function(ind, val) {     
+        $(this).mouseleave(function(){
+                $(this).children("div").removeClass("active")
+                $(this).children(".about__skills__box__percent").removeClass("active")
+                $(this).children(".about__skills__box__teck").removeClass("active").css({
+                    "transition-delay": "1.2s"
+                })
+            });
+      });
 
 
-
-    //    ------------------- PLANETS ON HOVER -----------------
-
-    $(".about__right__html__main").mouseover(function () {
-        $(this).siblings(".about__right__html__secondary").addClass("active");
-        $(this).siblings(".about__right__css__secondary1").addClass("active");
-        $(this).siblings(".about__right__css__secondary2").addClass("active");
-        $(this).siblings(".about__right__css__secondary3").addClass("active");
-        $(this).siblings(".about__right__javascript__secondary").addClass("active");
-    })
-
-    $(".about__right__html__main").mouseleave(function () {
-        $(this).siblings(".about__right__html__secondary").removeClass("active");
-    })
-
-    $(".about__right__css__main").mouseover(function () {
-        $(this).siblings(".about__right__css__secondary1").addClass("active");
-        $(this).siblings(".about__right__css__secondary2").addClass("active");
-        $(this).siblings(".about__right__css__secondary3").addClass("active");
-    })
-
-    $(".about__right__css__main").mouseleave(function () {
-        $(this).siblings(".about__right__css__secondary1").removeClass("active");
-        $(this).siblings(".about__right__css__secondary2").removeClass("active");
-        $(this).siblings(".about__right__css__secondary3").removeClass("active");
-    })
-
-    $(".about__right__javascript__main").mouseover(function () {
-        $(this).siblings(".about__right__javascript__secondary1").addClass("active");
-        $(this).siblings(".about__right__javascript__secondary2").addClass("active");
-        $(this).siblings(".about__right__javascript__secondary3").addClass("active");
-    })
-
-    $(".about__right__javascript__main").mouseleave(function () {
-        $(this).siblings(".about__right__javascript__secondary1").removeClass("active");
-        $(this).siblings(".about__right__javascript__secondary2").removeClass("active");
-        $(this).siblings(".about__right__javascript__secondary3").removeClass("active");
-    })
+  
         //  ------------- IMAGE SCROLL ----------------------
-
-        var $element =  $(".project__container__box__left") ;
-        $(window).scroll(function () {
-
-             $element.each(function() {
-                    isScrolledIntoView($(this))
-                    isScrolledIntoViewTop($(this))
-
-             })
-           });
 
 
 
