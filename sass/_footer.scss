@@ -1,6 +1,132 @@
 .footer {
     background-color: $gray-dark-1;
 
+    &__contact {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+
+            @media only screen and (max-width: $bp-medium) {
+                flex-direction: column;
+            } 
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 30%;
+
+            @media only screen and (max-width: $bp-medium) {
+                margin-bottom: 5rem;
+                flex: 0 0 60%;
+                width: 70%;
+            } 
+ 
+             @media only screen and (max-width: $bp-smaller){
+                width: 55%;
+             }
+
+
+            &__text {
+                height: 5rem;
+                background-color: $gray-dark-1;
+                border: none;
+                border-bottom: 2px solid $orange;
+                font-family: inherit;
+                font-size: 1.8rem;
+                color: $color-grey-light-3;
+                padding: 0 2rem;
+                text-align: center;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &::placeholder {
+                    opacity: 0;
+                }
+
+                &:not(:placeholder-shown) + label {
+                    transform: translate(-7rem, -4.2rem);
+                    transition: all .4s;
+
+                    @media only screen and (max-width: $bp-smaller) {
+                        transform: translate(-5rem, -4.2rem);
+                    }
+                }
+                
+                &:focus + label{
+                    transform: translate(-7rem, -4.2rem);
+                    transition: all .4s;
+
+                    @media only screen and (max-width: $bp-smaller) {
+                        transform: translate(-5rem, -4.2rem);
+                    }
+                }
+            }
+
+            &__area {
+                font-family: inherit;
+                height: 15rem;
+                background-color: $gray-dark-1;
+                border: 2px solid $orange;
+                padding: 1rem;
+                font-size: 1.6rem;
+                color: $color-grey-light-3;
+                resize: none;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &::placeholder {
+                    color: $color-grey-light-3;
+                }
+            }
+
+            &__label {
+                transform: translate(2rem, -4.2rem);
+                font-size: 2rem;
+                color: $color-grey-light-3;
+                transition: all .4s;
+            }
+        }
+
+        &__form__submit {
+            margin-left: 5rem;
+            font-family: inherit;
+            text-transform: uppercase;
+            color: $color-grey-light-3;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 1.6rem;
+            background: transparent;
+            border: 2px solid $orange;
+            padding: 1.5rem 4rem;
+            transition: all .2s;
+            box-shadow: 2px 5px 10px $color-grey-primary;
+            cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                transform: translateY(-.3rem);
+                box-shadow: 2px 7px 20px $color-grey-primary;
+            }
+            
+            &:active {
+                transform: translateY(0rem);
+                box-shadow: 2px 5px 10px $color-grey-primary;
+            }
+
+            @media only screen and (max-width: $bp-medium) {
+                margin-left: 0;
+            } 
+        }
+    }
+
 
     &__container {
         height: 20rem;
@@ -9,6 +135,10 @@
         align-items: center;
         color: $color-grey-light;
         text-align: center;
+
+        @media only screen and (max-width: $bp-medium) {
+            flex-direction: column;
+        } 
 
         &__left{
             flex: 0 0 33%;
@@ -26,6 +156,10 @@
             flex: 0 0 33%;
             display: flex;
             justify-content: space-evenly;
+
+            @media only screen and (max-width: $bp-medium) {
+                width: 90%;
+            } 
 
 
             &__link {

@@ -25,35 +25,71 @@ function isScrolledIntoViewTop(a) {
 
 
 $(document).ready(function(){
+
     // ------------ NAV BAR --------------------
-    // var stickyNav = $(".nav").offset().top;
-    // console.log(stickyNav);
-    // $(window).scroll(function(){
-    //     if( $(window).scrollTop() > stickyNav) {
-    //         $(".nav").addClass("sticky");
-    //         $(".nav__box__item__link").css({"color": "#292929"});
-    //         $(".nav__box__svg__logo__pic").attr("src", "/img/svg/logo-full.svg");
-    //     } else {
-    //         $(".nav").removeClass("sticky");
-    //         $(".nav__box__item__link").css({"color": "#fff"});
-    //         $(".nav__box__svg__logo__pic").attr("src", "/img/svg/logo-glyph-white.svg");
-    //     }
-    // });
+
+    var colorNav = $(".nav").outerHeight();
+    $nav = $(".nav");
+    console.log(colorNav , $(window).scrollTop(), $(window).height());
+    $(window).scroll(function(){
+        if( $(window).scrollTop() > $(window).height()) {
+            $nav.addClass("active");
+        } else {
+            $nav.removeClass("active");
+        }
+    });
 
 
 
 ///  ------------- CHECKBOX MENU ------------------
+    var $checkbox = $(".nav__checkbox");
+    var $button = $(".nav__button");
 
-    // $(".nav__label").on("click", function() {
-    //     if ($(".nav__checkbox").prop('checked')) {
-    //         $(".nav__box__list").removeClass("active-1");
-    //         // $("body").removeClass("color-1");
-    //     } else {
-         
-    //         $(".nav__box__list").addClass("active-1");
-    //         // $("body").addClass("color-1");
-    //     }
-    // });
+
+
+    $button.on("click", function() {
+        if ( $checkbox.prop('checked') ) {
+            $(".horisontal__box__cover").removeClass("active");
+            $(".vertical").removeClass("active");
+            $(".nav__button__text").html("Menu");
+            $(".horisontal__box__list").removeClass("active")
+
+            $(".horisontal__box__list__item").each(function(index, val) {
+                $(val).removeClass("active");
+                $(val).css({
+                    "transition-delay": ".001s",
+                    "transition": "all .001s"
+                })
+
+            })
+            
+        } else {
+            $(".horisontal__box__cover").addClass("active");
+            $(".vertical").addClass("active");
+            $(".nav__button__text").html("Close")
+            $(".horisontal__box__list").addClass("active")
+            var counter = .4;
+            $(".horisontal__box__list__item").each(function(index, val) {
+                $(val).addClass("active");
+                $(val).css({
+                    "transition": "all .3s",
+                    "transition-delay": `${counter}s`
+                })
+                counter += .4
+            })
+        }
+    });
+
+    $(".horisontal__box__list__link").on("click", function() {
+        $checkbox.prop("checked",false).trigger("change");
+        $(".horisontal__box__cover").removeClass("active");
+        $(".vertical").removeClass("active");
+        $(".nav__button__text").html("Menu");
+        $(".horisontal__box__list").removeClass("active")
+        $(".horisontal__box__list__item").removeClass("active");
+
+    }); 
+
 
     // ------------- SLIDER ------------
     var index = 0;
@@ -132,16 +168,7 @@ $(document).ready(function(){
               };
 
 
-            //   $(".modal").on("resize scroll", function (){
-            //     console.log( $(".modal__box__project__left__header").isFullyInViewport() );
-            //     if( $(".modal__box__project__left__header").isFullyInViewport() ) {
-            //         $(".modal__box__project__right__cover1").each(function(index, val) {
-            //             $(val).addClass("active");
-            //         })
-            //     } else {
-            //         $(val).removeClass("active");
-            //     }
-            // });
+ 
            //   ----------- WHAT TO DO WHEN ELEMENT IS IN VIEW ---------------
         $(window).on("resize scroll", function (){
 
@@ -187,41 +214,41 @@ $(document).ready(function(){
 
         //  ------------------- test -----------------------------
 
-        var $header = $('.modal__box__front__mid__header');
+        // var $header = $('.modal__box__front__mid__header');
 
-        $(".modal").scroll(function () {
-            var s = $(this).scrollTop(),
-                d = $(document).height(),
-                c = $(this).height(),
-                windowBot = s + c,
-                elemBot = $header.offset().top + $header.outerHeight(),
-                elemHight = $header.outerHeight();
+        // $(".modal").scroll(function () {
+        //     var s = $(this).scrollTop(),
+        //         d = $(document).height(),
+        //         c = $(this).height(),
+        //         windowBot = s + c,
+        //         elemBot = $header.offset().top + $header.outerHeight(),
+        //         elemHight = $header.outerHeight();
 
 
     
-            scrollPercent = (s / (d - c));
+        //     scrollPercent = (s / (d - c));
 
-            var num = s /10
+        //     var num = s /10
     
-            var position = (scrollPercent * ($(document).width() - $header.width()));
+        //     var position = (scrollPercent * ($(document).width() - $header.width()));
     
-            $header.css({
-                'transform': `translateX(-${num})`
-            });
-        });
+        //     $header.css({
+        //         'transform': `translateX(-${num})`
+        //     });
+        // });
 
 
     $(".project__container__box__left").on("click", function(){
         var $top =  $(this).siblings(".project__container__box__top");
         var $bot =  $(this).siblings(".project__container__box__bot");
         var $mid =  $(this).siblings(".project__container__box__mid");
-
+        var $modal = $(this).siblings(".modal");
         $(this).siblings(".project__container__box__top").addClass("active");
         $(this).siblings(".project__container__box__bot").addClass("active");
-
+   
         setTimeout(function() {
             $mid.addClass("active");
-            $(".modal").addClass("active");
+            $modal.addClass("active");
         }, 1400);
 
         setTimeout(function() {
@@ -229,6 +256,7 @@ $(document).ready(function(){
             $bot.addClass("active2");
             $mid.css({"display": "none"})
             $mid.removeClass("active")
+ 
         }, 2900);
 
         setTimeout(function() {
@@ -251,13 +279,14 @@ $(document).ready(function(){
         var $top =  $(this).siblings(".project__container__box__top");
         var $bot =  $(this).siblings(".project__container__box__bot");
         var $mid =  $(this).siblings(".project__container__box__mid");
+        var $modal = $(this).siblings(".modal");
 
         $(this).siblings(".project__container__box__top").addClass("active");
         $(this).siblings(".project__container__box__bot").addClass("active");
 
         setTimeout(function() {
             $mid.addClass("active");
-            $(".modal").addClass("active");
+            $modal.addClass("active");
         }, 1300);
 
         setTimeout(function() {
@@ -333,6 +362,8 @@ $(document).ready(function(){
                 $(this).children(".about__skills__box__teck").addClass("active").css({
                     "transition-delay": ".2s"
                 })
+
+                $(this).children("div").children(".about__skills__box__small__cover").addClass("active")
             });
       });
 
@@ -343,6 +374,8 @@ $(document).ready(function(){
                 $(this).children(".about__skills__box__teck").removeClass("active").css({
                     "transition-delay": "1.2s"
                 })
+
+                $(this).children("div").children(".about__skills__box__small__cover").removeClass("active")
             });
       });
 
@@ -413,14 +446,6 @@ $(document).ready(function(){
             $(".project__container__box__right__text__view").removeClass("active");
             $(".project__container__box__right__text__span").removeClass("active");
         });
-
-
-
-        // ----------------- BUTTON IMAGE CHANGE -------------------
-     
-
-        // ------------------------- CAROUSEL ---------------------------
-
 
 
 });

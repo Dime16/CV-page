@@ -1,39 +1,343 @@
 .nav {
-    height: 10rem;
-    background-color: $color-grey-primary;
+    height: 100%;
+    width: 10rem;
+    position: fixed;
+    z-index: 500;
+    background-color: transparent;
+    transition: all .5s;
+    display: block;
+    z-index: 41;
+
+    &.active {
+        background-color: $gray-light-1;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        width: 100%;
+        height: 10rem;
+    } 
+
+    // --------------------------- NAV BUTTON -------------------------------------
+
+    &__pointer {
+        cursor: pointer;
+        display: block;
+    }
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__button {
+        text-align: center;
+        position: relative;
+        width: 6rem;
+        height: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transform: translateX(1rem);
+        z-index: 47;
+
+        &__text {
+            font-size: 1.5rem;
+            color: $orange;
+            text-transform: uppercase;
+            transform: translate(-1rem, 3rem);
+            position: relative;
+            z-index: 47;
+        }
+
+        &__icon {
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            width: 4rem;
+            left: 0;
+            z-index: 47;
+
+            &,
+            &::before,
+            &::after {
+                height: 2px;
+                background-color: $orange;
+                display: inline-block;
+                transition: all .3s;
+            }
+             
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+            }
+
+            &::before {
+                width: 3rem;
+                top: -.8rem;
+                left: 0;
+
+
+            }
+            &::after {
+                width: 2rem;
+                top: .8rem;
+                left: 0;
+            }
+        }
+    }
+
+    &__button:hover &__button__icon {
+        width: 3rem;
+    }
+
+    &__button:hover &__button__icon::before {
+        top: -1rem;
+        width: 4rem;
+    }
+
+    &__button:hover &__button__icon::after {
+        top: 1rem;
+        width: 4rem;
+    }
+
+    &__checkbox:checked + &__button &__button__icon {
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__button__icon::before {
+        transform: rotate(45deg);
+        top: 0;
+        width: 4rem;
+    }
+
+    &__checkbox:checked + &__button &__button__icon::after {
+       transform: rotate(-45deg);
+       top: 0;
+       width: 4rem;
+    }
+
+    // ------------------------- END OF NAV MENU -----------------------------------------
 
     &__container {
+        height: 100%;
         display: flex;
         justify-content: space-between;
+        flex-direction: column;
         align-items: center;
         padding: 1rem 5rem;
 
+        @media only screen and (max-width: $bp-medium) {
+            flex-direction: row;
+            width: 100%;
+        } 
+
+        @media only screen and (max-width: $bp-small) {
+            padding: 1rem 2rem;
+        } 
+
         &__logo {
-           
 
             &__icon {
                 font-size: 8rem;
-                color: $orange-1;
-            }
+                color: $orange;
+                position: relative;
+                z-index: 50;
 
+                @media only screen and (max-width: $bp-medium) {
+                    font-size: 6rem;
+                } 
+
+                @media only screen and (max-width: $bp-small) {
+                    font-size: 6rem;
+                } 
+            }
         }
 
 
-
         &__list {
+            flex: 0 0 25%;
             display: flex;
             list-style: none;
+            align-items: center;
             justify-content: space-between;
+            flex-direction: column;
+            position: relative;
+            z-index: 50;
+
+            @media only screen and (max-width: $bp-medium) {
+                flex-direction: row;    
+            } 
+
+            @media only screen and (max-width: $bp-small) {
+                display: none;
+            } 
+            
 
             &__item {
-                color: $orange-1;
-                font-size: 2rem;
+                color: $orange;
+                font-size: 1.7rem;
+                font-weight: 700;
                 white-space: nowrap;
+                transform: rotate(-90deg);
+                position: relative;
+                z-index: 50;
+
+                @media only screen and (max-width: $bp-medium) {
+                    transform: rotate(0deg);
+                } 
 
                 &:not(:last-child) {
-                    margin-right: 2rem;
+
+                    @media only screen and (max-width: $bp-medium) {
+                        margin-right: 2rem;   
+                    } 
                 }
             }
         }
     }
+}
+
+
+.horisontal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 40;
+
+    @media only screen and (max-width: $bp-large1) {
+        height: 100vh;
+    } 
+    
+    &__box {
+        flex: 1;
+        margin-left: 10rem;
+        height: 100%;
+        width: calc(100% -10rem);
+        display: flex;
+        align-items: center;
+
+        @media only screen and (max-width: $bp-medium) {
+            width: 100%;
+        } 
+
+        
+        @media only screen and (max-width: $bp-small) { 
+            margin-left: 5rem;
+         } 
+
+        &__list {
+            list-style: none;
+            text-transform: uppercase;
+            flex: 0 0 50%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 41;
+            margin-left: 25rem;
+
+            &.active {
+                position: fixed;
+            }
+
+            @media only screen and (max-width: $bp-large1) {
+                // width: 100%;
+                margin-left: 15rem;
+            } 
+            @media only screen and (max-width: $bp-medium) {
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            } 
+           
+            &__item {   
+                flex: 0 0 33%;
+                text-align: center;
+                font-weight: 900;
+                visibility: hidden;
+                opacity: 0;
+                position: relative;
+                z-index: 41;
+                 text-shadow: -1rem -1rem 5px $color-grey-dark-1;
+                
+
+                &.active {
+                    visibility: visible;
+                    opacity: 1;
+                }
+
+
+                
+
+                &:not(:last-child) {
+                    margin-bottom: 3rem;
+                }
+               
+            }
+
+            &__link {
+                color: #fff;
+                font-size: 7rem;
+                
+                @media only screen and (max-width: $bp-smallest) { 
+                    font-size: 5rem;
+                 } 
+            }
+        }
+
+        &__cover {
+            height: 100%;
+            width: 0;
+            background-color: $color-green-primary;
+            display: block;
+            position: fixed;
+            right: 0;
+            top: 0;
+            transition: all .5s;
+            z-index: 40;
+            filter: opacity(95%);
+
+            &.active {
+                width: calc(100% - 10rem);
+
+                @media only screen and (max-width: $bp-medium) { 
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+.vertical {
+    height: 0;
+    width: 10rem;
+    background-color: $color-green-primary;
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all .4s;
+    z-index: 45;
+    filter: opacity(95%);
+
+    &.active {
+        height: 100%;
+
+        @media only screen and (max-width: $bp-medium) { 
+            height: 10rem;
+        }
+
+    }
+
+    @media only screen and (max-width: $bp-medium) { 
+        width: 0;
+        height: 10rem;
+
+        &.active {
+            width: 100%;
+        }
+    } 
 }

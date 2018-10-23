@@ -2,34 +2,66 @@
     background-color: $color-grey-primary;
     padding-top: 15rem;
     position: relative;
-    &__container {
-       
+    width: 100%;
 
+    @media only screen and (max-width: $bp-large) {
+        padding-top: 3rem;
+    } 
+
+    &__container {
+        width: calc(100% - 10rem);
+        margin-left: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        @media only screen and (max-width: $bp-mega) {
+            margin-left: 0;
+        }
+       
+        
+        @media only screen and (max-width: $bp-medium) {
+            width:  100%;
+        }
+ 
 
         &__box {
             display: flex;
             justify-content: flex-start;
             overflow: hidden;
-            // position: relative;
-    
+            margin-left: 7rem;
+            padding-bottom: 10rem;
+
+            @media only screen and (max-width: $bp-small) {
+                margin-left: 0;
+                justify-content: center;
+            }
+
+            @media only screen and (max-width: $bp-smaller) { 
+                padding-bottom: 5rem;
+             } 
+
 
             &-reverse {
                 display: flex;
                 justify-content: flex-end;
-                // overflow: hidden;
-                padding-bottom: 15rem;
-            }
-            &:not(:last-child) {
-                // margin-bottom: 15rem;
-            }
+                margin-right: 7rem;
+                padding-bottom: 10rem;
 
+                @media only screen and (max-width: $bp-small) {
+                    margin-right: 0;
+                    justify-content: center;
+                }
 
+                @media only screen and (max-width: $bp-smaller) { 
+                    padding-bottom: 5rem;
+                 } 
+
+            }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 
 
             &__top {
@@ -38,7 +70,7 @@
                 top: 0;
                 height: 50%;
                 width: 0;
-                background-color: orangered;
+                background-color: $gray-dark-1;
                 transition: all 1.3s;
                 z-index: 1000;
 
@@ -76,7 +108,7 @@
                 bottom: 0;
                 height: 50%;
                 width: 0;
-                background-color: orangered;
+                background-color: $gray-dark-1;
                 transition: all 1.3s;
                 z-index: 1000;
 
@@ -99,11 +131,10 @@
             &__left {
                 height: 100%;
                 margin-left: 10rem;
-                flex: 0 0 50%;
+                flex: 0 0 40%;
                 display: flex;
                 object-fit: cover;
                 transform: translateY(10rem);
-                // opacity: 0;
                 transition: all .4s;
                 position: relative;
                 cursor: pointer;
@@ -119,12 +150,23 @@
                     opacity: 0;
                 }
     
+                @media only screen and (max-width: $bp-medium){
+                    margin-left: 5rem;
+                    flex: 0 0 60%;   
+                }
                 
+                @media only screen and (max-width: $bp-small){
+                    margin-left: 0;
+                }
+
+                @media only screen and (max-width: $bp-smaller) { 
+                    flex-direction:  column-reverse;
+                 } 
 
                 &__img {
                     width: 70%;
                     height: 100%;
-                    flex: 0 0 60%;
+                    flex: 0 0 55%;
                     transition: all .4s;
                     margin-left: 5rem;
                     display: block;
@@ -133,10 +175,14 @@
                     filter: blur(5px) brightness(65%) grayscale(70%);
 
                     &.active {
-                        -webkit-transform: scale(1.2) translateX(-4rem);
+                        -webkit-transform: scale(1.1) translateX(-3rem);
                         filter: blur(0px) brightness(100%);
                     }
 
+                    @media only screen and (max-width: $bp-medium){
+                        margin-left: 0;
+                    }
+        
                 }
 
                 &__text {
@@ -152,7 +198,6 @@
                     &__header {
                         font-size: 5rem;
                         font-weight: 800;
-                        // font-family: 'Kanit', sans-serif;
                         text-transform: uppercase;
                         transform: translateX(-2rem);
                         letter-spacing: 2px;
@@ -160,7 +205,11 @@
                         line-height: -1.5;
 
                         &.active {
-                            transform: translate(6rem, -4rem);
+                            transform: translate(6rem, -3rem);
+                        }
+   
+                        @media only screen and (max-width: $bp-medium){
+                            font-size: 3.5rem;
                         }
                     }
 
@@ -196,41 +245,53 @@
 
   
             &__right {
-                justify-self: flex-end;
-                margin-right: 10rem;
+                height: 100%;
+                margin-right: 15rem;
                 flex: 0 0 40%;
                 display: flex;
                 object-fit: cover;
                 transform: translateY(10rem);
                 transition: all .4s;
+                position: relative;
+                cursor: pointer;
 
                 &.active {
-                    // transform: translateX(0rem) scale(1);
                     transform: translateY(0rem);
                     opacity: 1;
                 }
     
                 &.active2 {
-                    // transform: translateX(0rem) scale(1);
                     transform: translateY(-10rem);
                     opacity: 0;
                 }
 
+                @media only screen and (max-width: $bp-medium){
+                    margin-left: 0;
+                    flex: 0 0 60%;                }
+
+                @media only screen and (max-width: $bp-smaller) { 
+                    flex-direction:  column;
+                    margin-right: 0;
+                 } 
+
                 &__img {
                     width: 70%;
                     height: 100%;
-                    flex: 0 0 60%;
+                    flex: 0 0 55%;
                     transition: all .4s;
                     margin-right: 5rem;
-                    display: block;
                     overflow: hidden;
                     -webkit-transform:scale(1.0);
                     filter: blur(5px) brightness(70%) grayscale(70%);
 
                     &.active {
-                        -webkit-transform: scale(1.2) translateX(4rem);
+                        -webkit-transform: scale(1.1) translateX(3rem);
                         filter: blur(0px) brightness(150%);
                     }
+
+                    @media only screen and (max-width: $bp-smaller) { 
+                        margin-right: 0;
+                     } 
 
                 }
 
@@ -245,12 +306,10 @@
                     &__header {
                         font-size: 5rem;
                         font-weight: 800;
-                        font-family: 'Kanit', sans-serif;
                         text-transform: uppercase;
                         transform: translateX(2rem);
                         letter-spacing: 2px;
                         transition: all .4s;
-                        line-height: -1.5;
                         text-align: right;
                         position: relative;
                         z-index: 1;
@@ -258,13 +317,16 @@
                         &.active {
                             transform: translate(-6rem, -4rem);
                         }
+
+                        @media only screen and (max-width: $bp-medium){
+                            font-size: 3.5rem;
+                        }
                     }
 
                     &__view {
                         font-size: 1.8rem;
                         display: flex;
                         align-items: center;
-                        font-family: 'Kanit', sans-serif;
                         transition: all .4s;
 
                         &.active {
@@ -307,6 +369,7 @@
     color: #fff;
     overflow: scroll;
     
+    
     &.active {
         display: block;
     }
@@ -326,6 +389,13 @@
             justify-content: space-around;
             padding: 0 15rem;
 
+
+
+            @media only screen and (max-width: $bp-large1) {
+                padding: 0 5rem;
+            } 
+
+
             &__top {
                 display: flex;
                 justify-content: space-between;
@@ -340,13 +410,14 @@
                     text-transform: uppercase;
                     font-size: 2.2rem;
                     font-weight: 600;
+                    cursor: pointer;
                 }
             }
 
             &__mid {
                 display: flex;
-                justify-content: flex-end;
-                // align-self: center;
+                justify-content: center;
+                
 
                 &__year {
                     font-size: 1.8rem;
@@ -354,16 +425,50 @@
                 }
 
                 &__header {
-                    text-align: right;
                     font-size: 22rem;
                     text-transform: uppercase;
-                    transition: all .8s ease;
+
+                    @media only screen and (max-width: $bp-mega) {
+                        font-size: 19.5rem;
+                    }
+    
+                    @media only screen and (max-width: $bp-large) {
+                        font-size: 15rem;
+                    } 
+    
+                    @media only screen and (max-width: $bp-large1) {
+                        font-size: 13rem;
+                    } 
+    
+                    @media only screen and (max-width: $bp-medium) {
+                        font-size: 12rem;
+                    } 
+    
+                    @media only screen and (max-width: $bp-small) {
+                        font-size: 8rem;
+                    } 
+    
+                    @media only screen and (max-width: $bp-smaller) { 
+                       font-size: 6rem;
+                    } 
+    
+                    @media only screen and (max-width: $bp-smallest) { 
+                        font-size: 5rem;
+                    } 
                 }
             }
 
             &__bot {
                 display: flex;
                 justify-content: space-between;
+
+                &__link {
+                    color: inherit;
+
+                    &:visited {
+                        color: inherit;
+                    }
+                }
 
                 &__view {
                     font-size: 3rem;
@@ -375,6 +480,7 @@
                     font-size: 3rem;
                     text-transform: capitalize;
                     font-weight: 600;
+                    text-align: right;
                 }
 
             }
@@ -383,22 +489,57 @@
 
         &__project {
             display: flex;
-            align-items: flex;
+            align-items: center;
             justify-content: center;
             align-items: center;
             height: 80vh;
             width: 100%;
 
+            @media only screen and (max-width: $bp-largest) {
+                flex-direction: column;
+            } 
+
+            @media only screen and (max-width: $bp-small) {
+                height: 60vh;
+            } 
+
+            @media only screen and (max-width: $bp-smaller) {
+                height: 50vh;
+            } 
+
 
             &__left {
-                flex: 0 0 40%;
-                
-            
+                flex: 0 0 50%;
+
+                @media only screen and (max-width: $bp-largest) {
+                    flex: 0;
+                } 
 
                 &__header {
                     font-size: 10rem;
                     text-transform: capitalize;
                     text-align: center;
+                    padding: 3rem;
+
+                    @media only screen and (max-width: $bp-large1) {
+                        font-size: 13rem;
+                    } 
+    
+                    @media only screen and (max-width: $bp-medium) {
+                        font-size: 12rem;
+                    } 
+    
+                    @media only screen and (max-width: $bp-small) {
+                        font-size: 8rem;
+                    } 
+    
+                    @media only screen and (max-width: $bp-smaller) { 
+                       font-size: 6rem;
+                    } 
+    
+                    @media only screen and (max-width: $bp-smallest) { 
+                        font-size: 5rem;
+                    }
                   
 
                     // &-reverse {
@@ -412,13 +553,50 @@
                     font-size: 2rem;
                     line-height: 1.8;
                     height: 100%;
+
+                    @media only screen and (max-width: $bp-largest) {
+                        width: 100%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        text-align: center;
+                    } 
+
+                    @media only screen and (max-width: $bp-small) {
+                        font-size: 1.9rem;
+                    } 
+    
+                    @media only screen and (max-width: $bp-smaller) { 
+                       font-size: 1.8rem;
+                       line-height: 1.2;
+                    } 
                 }
             }
         
             &__right {
-                flex: 0 0 40%;
+                flex: 0 0 30%;
                 position: relative;
-                // overflow: hidden;
+
+                @media only screen and (max-width: $bp-largest) {
+                    width: 60%;
+                    margin-left: auto;
+                    margin-right: auto;
+                } 
+
+                @media only screen and (max-width: $bp-medium) {
+                    width: 80%;
+                    margin-left: auto;
+                    margin-right: auto;
+                } 
+
+                &__reverse {
+                    flex: 0 0 15%;
+
+                    @media only screen and (max-width: $bp-largest) {
+                        width: 60%;
+                        margin-left: auto;
+                        margin-right: auto;
+                    } 
+                }
  
                 &__img {
                     width: 100%;
