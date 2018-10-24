@@ -32,6 +32,8 @@
             overflow: hidden;
             margin-left: 7rem;
             padding-bottom: 10rem;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-tap-highlight-color: transparent;
 
             @media only screen and (max-width: $bp-small) {
                 margin-left: 0;
@@ -411,6 +413,8 @@
                     font-size: 2.2rem;
                     font-weight: 600;
                     cursor: pointer;
+                    -webkit-tap-highlight-color: rgba(0,0,0,0);
+                    -webkit-tap-highlight-color: transparent;
                 }
             }
 
@@ -474,6 +478,8 @@
                     font-size: 3rem;
                     text-transform: capitalize;
                     font-weight: 600;
+                    -webkit-tap-highlight-color: rgba(0,0,0,0);
+                    -webkit-tap-highlight-color: transparent;
                 }
 
                 &__open {
@@ -481,6 +487,8 @@
                     text-transform: capitalize;
                     font-weight: 600;
                     text-align: right;
+                    -webkit-tap-highlight-color: rgba(0,0,0,0);
+                    -webkit-tap-highlight-color: transparent;
                 }
 
             }
@@ -494,19 +502,15 @@
             align-items: center;
             height: 80vh;
             width: 100%;
+            margin-bottom: 3rem;
 
             @media only screen and (max-width: $bp-largest) {
                 flex-direction: column;
             } 
 
             @media only screen and (max-width: $bp-small) {
-                height: 60vh;
+                height: 65vh;
             } 
-
-            @media only screen and (max-width: $bp-smaller) {
-                height: 50vh;
-            } 
-
 
             &__left {
                 flex: 0 0 50%;
@@ -553,6 +557,7 @@
                     font-size: 2rem;
                     line-height: 1.8;
                     height: 100%;
+                    margin-bottom: 3rem;
 
                     @media only screen and (max-width: $bp-largest) {
                         width: 100%;
@@ -590,6 +595,7 @@
 
                 &__reverse {
                     flex: 0 0 15%;
+                    position: relative;
 
                     @media only screen and (max-width: $bp-largest) {
                         width: 60%;
@@ -600,63 +606,6 @@
  
                 &__img {
                     width: 100%;
-                }
-
-                &__cover1 {
-                    left:-50%;
-                    bottom: -50%;
-                    // z-index: 1010;
-                    width: 150%;
-                    height: 100%;
-                    transform: rotate(45deg);
-                    background-color: rebeccapurple;
-                    position: absolute;
-                    transition: all .4s;
-
-                    &.active {
-                        width: 0;
-                    }
-
-                    &::before {
-                        position: absolute;
-                        background-color: green;
-                        content: "";
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        transition: all .4s;
-                        transition-delay: .5s;
-
-                        &.active {
-                            width: 0;
-                        }
-                    }
-
-                    &::after {
-                        content: "";
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        transition: all .4s;
-                        transition-delay: .1s;
-
-
-                        &.active {
-                            width: 0;
-                        }
-                    }
-
-                }
-
-                &__cover2 {
-                    right: -50%;
-                    top: -50%;
-                    width: 150%;
-                    height: 150%;
-                    transform: rotate(45deg);
-                    background-color: yellow;
-                    position: absolute;
-                    transition: all .4s;
                 }
             }
         }

@@ -107,6 +107,8 @@
             position: relative;
             width: 50%;
             cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-tap-highlight-color: transparent;
 
             &:first-child {
                 margin-bottom: 10rem;
@@ -275,6 +277,7 @@
                 transition: all .5s;
                 transition-delay: .2s;
                 transform: skew(40deg);
+                -webkit-tap-highlight-color: transparent;
 
                 &.active {
                     width: 0;
@@ -301,6 +304,7 @@
                 transition-delay: .4s;
                 transform: skew(40deg);
                 filter: opacity(66%);
+                -webkit-tap-highlight-color: transparent;
       
                 &.active {
                     width: 0;
@@ -327,6 +331,7 @@
                 transition-delay: .6s;
                 transform: skew(40deg);
                 filter: opacity(100%);
+                -webkit-tap-highlight-color: transparent;
       
                 &.active {
                     width: 0;
