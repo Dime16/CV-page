@@ -10,7 +10,7 @@
 
     &.active {
         background-color: $gray-light-1;
-        filter: opacity(90%);
+        // filter: opacity(90%);
     }
 
     @media only screen and (max-width: $bp-medium) {
@@ -163,7 +163,7 @@
 
 
         &__list {
-            flex: 0 0 25%;
+            flex: 0 0 35%;
             display: flex;
             list-style: none;
             align-items: center;
@@ -202,7 +202,7 @@
                 &:not(:last-child) {
 
                     @media only screen and (max-width: $bp-medium) {
-                        margin-right: 2rem;   
+                        margin-right: 2rem; 
                     } 
                 }
             }

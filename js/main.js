@@ -242,10 +242,12 @@ $(document).ready(function(){
         var $top =  $(this).siblings(".project__container__box__top");
         var $bot =  $(this).siblings(".project__container__box__bot");
         var $mid =  $(this).siblings(".project__container__box__mid");
+        var $html = $('html');
         var $modal = $(this).siblings(".modal");
         $(this).siblings(".project__container__box__top").addClass("active");
         $(this).siblings(".project__container__box__bot").addClass("active");
-   
+        $html.css({"overflow": "hidden"})
+
         setTimeout(function() {
             $mid.addClass("active");
             $modal.addClass("active");
@@ -279,11 +281,12 @@ $(document).ready(function(){
         var $top =  $(this).siblings(".project__container__box__top");
         var $bot =  $(this).siblings(".project__container__box__bot");
         var $mid =  $(this).siblings(".project__container__box__mid");
+        var $html = $('html');
         var $modal = $(this).siblings(".modal");
 
         $(this).siblings(".project__container__box__top").addClass("active");
         $(this).siblings(".project__container__box__bot").addClass("active");
-
+        $html.css({"overflow": "hidden"})
         setTimeout(function() {
             $mid.addClass("active");
             $modal.addClass("active");
@@ -316,11 +319,13 @@ $(document).ready(function(){
         var $top = $(".project__container__box__top");
         var $bot = $(".project__container__box__bot");
         var $mid = $(".project__container__box__mid");
+        var $html = $('html');
         $($top).addClass("active");
         $($bot).addClass("active");
 
         setTimeout(function() {
             $mid.addClass("active");
+            
         }, 1300);
 
         setTimeout(function() {
@@ -338,6 +343,7 @@ $(document).ready(function(){
             $bot.removeClass("active");
             $top.removeClass("active2");
             $bot.removeClass("active2");
+            $html.css({"overflow": "scroll"})
         }, 4100)
         setTimeout(function() {
             $top.css({"display": "block"})
