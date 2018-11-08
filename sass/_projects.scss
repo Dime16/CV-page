@@ -1,6 +1,6 @@
 .project {
     background-color: $color-grey-primary;
-    padding-top: 15rem;
+    // padding-top: 15rem;
     position: relative;
     width: 100%;
 
@@ -15,6 +15,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        padding-top: 10rem;
 
         @media only screen and (max-width: $bp-mega) {
             margin-left: 0;
@@ -412,18 +413,20 @@
                     top: 5rem;
                     right: 15rem;
                     text-transform: uppercase;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     font-size: 2rem;
                     font-weight: 600;
                     cursor: pointer;
                     -webkit-tap-highlight-color: rgba(0,0,0,0);
                     -webkit-tap-highlight-color: transparent;
                     z-index: 100;
-                    background-color: $gray-light-3;
-                    color: $orange;
                     background-color: $orange;
                     color: $gray-light-3;
                     border-radius: 50%;
-                    padding: 2.4rem 1.2rem;
+                    margin: 0 auto;
                     height: 8rem;
                     width: 8rem;
 
@@ -538,23 +541,19 @@
 
         &__project {
             display: flex;
+            justify-content: space-evenly;
             align-items: center;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
             width: 100%;
-            margin-bottom: 3rem;
+            margin-bottom: 10rem;
 
             @media only screen and (max-width: $bp-largest) {
                 flex-direction: column;
             } 
 
-            @media only screen and (max-width: $bp-small) {
-                height: 65vh;
-            } 
 
             &__left {
-                flex: 0 0 50%;
+                flex: 0 0 40%;
+               
 
                 @media only screen and (max-width: $bp-largest) {
                     flex: 0;
@@ -566,8 +565,13 @@
                     text-align: center;
                     padding: 3rem;
 
+                    @media only screen and (max-width: $bp-largest) {
+                        text-align: center;
+                    } 
+
                     @media only screen and (max-width: $bp-large1) {
                         font-size: 13rem;
+                        
                     } 
     
                     @media only screen and (max-width: $bp-medium) {
@@ -585,13 +589,6 @@
                     @media only screen and (max-width: $bp-smallest) { 
                         font-size: 5rem;
                     }
-                  
-
-                    // &-reverse {
-                    //     text-align: right;
-                    //     font-size: 10rem;
-                    //     text-transform: capitalize;
-                    // }
                 }
         
                 &__text {
@@ -599,6 +596,7 @@
                     line-height: 1.8;
                     height: 100%;
                     margin-bottom: 3rem;
+                    text-align: center;
 
                     @media only screen and (max-width: $bp-largest) {
                         width: 80%;
@@ -619,7 +617,7 @@
             }
         
             &__right {
-                flex: 0 0 30%;
+                flex: 0 0 40%;
                 position: relative;
 
                 @media only screen and (max-width: $bp-largest) {

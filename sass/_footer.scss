@@ -14,19 +14,40 @@
 
         &__form {
             display: flex;
-            flex-direction: column;
-            flex: 0 0 30%;
+            flex: 0 0 50%;
+            justify-content: center;
+            align-items: center;
+
+            @media only screen and (max-width: $bp-largest) {
+                margin-bottom: 5rem;
+                flex: 0 0 60%;
+                width: 60%;
+            } 
 
             @media only screen and (max-width: $bp-medium) {
                 margin-bottom: 5rem;
-                flex: 0 0 60%;
-                width: 70%;
+                flex: 0 0 80%;
+                justify-content: center;
+                flex-direction: column;
             } 
- 
-             @media only screen and (max-width: $bp-smaller){
-                width: 55%;
-             }
 
+            @media only screen and (max-width: $bp-small) {
+                width: 68%;
+            } 
+
+            &__left {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+
+                @media only screen and (max-width: $bp-largest) {
+                    flex: 0 0 70%;
+                } 
+
+                @media only screen and (max-width: $bp-medium) {
+                    width: 100%;
+                } 
+            }
 
             &__text {
                 height: 5rem;
@@ -107,9 +128,6 @@
             transition: all .2s;
             box-shadow: 2px 5px 10px $color-grey-primary;
             cursor: pointer;
-            position: absolute;
-            top: 50%;
-            left: 65%;
 
             &:focus {
                 outline: none;
@@ -126,15 +144,9 @@
             }
 
             @media only screen and (max-width: $bp-medium) {
-                top: 80%;
-                left: 36%;
-            } 
-
-            @media only screen and (max-width: $bp-medium1) {
-                margin: 0 auto;
                 margin-left: 0;
-                margin-right: 0;
-            } 
+                margin-top: 3rem;
+            }
 
             @media only screen and (max-width: $bp-smallest) {
                 margin-left: -1.7rem;

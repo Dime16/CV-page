@@ -23,14 +23,28 @@ function isScrolledIntoViewTop(a) {
     }
 };
 
+function isPatialyIntoView(a) {
+    var docViewTop = $(window).scrollTop() - a.innerHeight() + 100;
+    var docViewBottom = docViewTop + $(window).height();
+    var elemTop = a.offset().top;
+    var elemBottom = elemTop + a.outerHeight();
 
+    if (elemTop >= docViewTop && elemTop <= docViewBottom) {
+       return true;
+    } else {
+        return false;
+    }
+};
+
+
+  
 $(document).ready(function(){
 
     // ------------ NAV BAR --------------------
 
     var colorNav = $(".nav").outerHeight();
     $nav = $(".nav");
-    console.log(colorNav , $(window).scrollTop(), $(window).height());
+    // console.log(colorNav , $(window).scrollTop(), $(window).height());
     $(window).scroll(function(){
         if( $(window).scrollTop() > $(window).height()) {
             $nav.addClass("active");
@@ -168,22 +182,25 @@ $(document).ready(function(){
               };
 
 
- 
            //   ----------- WHAT TO DO WHEN ELEMENT IS IN VIEW ---------------
         $(window).on("resize scroll", function (){
 
 
             if( $(".about__me__box__header").isFullyInViewport() ) {
                 $(".about__me__box__header").addClass("active");
+                $(".about__me__box__text").addClass("active");
+                $(".about__me__box").addClass("active");
+                $(".about__me").addClass("active");
             } else {
-                $(".about__me__box__header").removeClass("active");
+                $(".about__me__box").removeClass("active");
             }
 
-            if( $(".about__me__box__text").isFullyInViewport() ) {
-                $(".about__me__box__text").addClass("active");
-            } else {
-                $(".about__me__box__text").removeClass("active");
-            }
+            // if( $(".about__me__box__text").isFullyInViewport() ) {
+            //     $(".about__me__box__text").addClass("active");
+            // } else {
+            //     $(".about__me__box__text").removeClass("active");
+            // }
+
 
         });
 
@@ -203,40 +220,50 @@ $(document).ready(function(){
             })
         });
 
+        var $element3 =  $(".about__s") ;
+        $(window).scroll(function () {
+            $element3.each(function() {
+                   if( isPatialyIntoView($(this).children('div').parent('div'))) {
 
+                       $(this).children('div').children('.about__s__box__line').addClass('active');
+                       $(this).children('div').children('div').children('div').children('div').children('.about__s__box__bottom__right__cover').addClass('active');
+                      var $line = $(this).children('div').children('div').children('div').children('div').children('.about__s__box__bottom__left__span');
 
+                      var delay = 0;
+                      setTimeout(function() {
+                          $line.each(function(index, val) {
+                              $(val).css({
+                                  "transition-delay": `${delay}s`
+                              });  
+                              delay += .3;
+                          $(val).addClass("active");
+                          })
+                      }, 500);
 
-
-        //    -------------------------LETTERS and IMAGES --------------------------
-
-        
+                    var $star =  $(this).children('div').children('div').children('div').children('div').children('.about__s__box__bottom__bot__icon');
+                    var $limit =  $(this).children('.about__s__num').html();
+                      var delay = 0;
+                      var counter = 0;
+                      var wait = .7;
+                      setTimeout(function() {
+                        $star.each(function(index, val) {
+                            $(val).css({
+                                "transition-delay": `${delay}s`
+                            });  
+                            delay += .15;
+                        $(val).addClass("active");
+                        counter++
+                        if(counter <= $limit){
+                            $(val).addClass("active1");
+                        }
+                        })
+                    }, 500);        
+                }
+            })
+        });
 
 
         //  ------------------- test -----------------------------
-
-        // var $header = $('.modal__box__front__mid__header');
-
-        // $(".modal").scroll(function () {
-        //     var s = $(this).scrollTop(),
-        //         d = $(document).height(),
-        //         c = $(this).height(),
-        //         windowBot = s + c,
-        //         elemBot = $header.offset().top + $header.outerHeight(),
-        //         elemHight = $header.outerHeight();
-
-
-    
-        //     scrollPercent = (s / (d - c));
-
-        //     var num = s /10
-    
-        //     var position = (scrollPercent * ($(document).width() - $header.width()));
-    
-        //     $header.css({
-        //         'transform': `translateX(-${num})`
-        //     });
-        // });
-
 
     $(".project__container__box__left").on("click", function(){
         var $top =  $(this).siblings(".project__container__box__top");
@@ -353,43 +380,6 @@ $(document).ready(function(){
         }, 4200);
         
     });
-
-
-
-
-
-
-      //  ------------ Togle text ------------------
-
-      $(".about__skills__box").each(function(ind, val) {     
-        $(this).mouseover(function(){
-                $(this).children("div").addClass("active")
-                $(this).children(".about__skills__box__percent").addClass("active")
-                $(this).children(".about__skills__box__teck").addClass("active").css({
-                    "transition-delay": ".2s"
-                })
-
-                $(this).children("div").children(".about__skills__box__small__cover").addClass("active")
-            });
-      });
-
-      $(".about__skills__box").each(function(ind, val) {     
-        $(this).mouseleave(function(){
-                $(this).children("div").removeClass("active")
-                $(this).children(".about__skills__box__percent").removeClass("active")
-                $(this).children(".about__skills__box__teck").removeClass("active").css({
-                    "transition-delay": "1.2s"
-                })
-
-                $(this).children("div").children(".about__skills__box__small__cover").removeClass("active")
-            });
-      });
-
-
-  
-        //  ------------- IMAGE SCROLL ----------------------
-
-
 
         //  -------------------- HOVER ON PROJECT -----------------------------
 
